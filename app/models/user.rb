@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
  private
 
  def valid_email?
-   errors.add(:email_not_valid, "This isn't a valid email.") unless email.match(/\A[\w+\-.]{3,}@[a-z\d\-.]{3,}\.[a-z]{2,}\z/i)
+   errors.add(:email_not_valid, "This isn't a valid email.") unless email =~ /\A[\w+\-.]{3,}@[a-z\d\-.]{3,}\.[a-z]{2,}\z/i
  end
 
 
