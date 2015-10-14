@@ -1,1 +1,55 @@
-<h1>Home Page</h1>
+<h1>Discount Sharing</h1>
+
+<% if @user && @user.errors.any? || @company && @company.errors.any? || @discount && @discount.errors.any? || @restriction && restriction.errors.any? %>
+  <div>
+    <strong>Some issues with your form, please fix them:</strong>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      <% @company.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      <% @discount.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      <% @restriction.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form>
+  <div>
+    <label>Username:</label>
+    <input type="text" name="username" value="<%= @user && @user.username %>">
+  </div>
+  <div>
+    <label>Email:</label>
+    <input type="text" name="email" value="<%= @user && @user.email %>">
+  </div>
+  <div>
+    <label>Password:</label>
+    <input type="text" name="password" value="<%= @user && @user.password %>">
+  </div>
+  <div>
+    <label>Company Name:</label>
+    <input type="text" name="company_name" value="<%= @company && @company.company_name %>">
+  </div>
+  <div>
+    <label>Company Website:</label>
+    <input type="text" name="url" value="<%= @company && @company.url %>">
+  </div>
+  <div>
+    <label>Discount Percent:</label>
+    <input type="text" name="discount_percent" value="<%= @discount && @discount.discount_percent %>">
+  </div>
+  <div>
+    <label>Discount Restriction:</label>
+    <input type="text" name="password" value="<%= @restriction && @restriction.description %>">
+  </div>
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+</form>
