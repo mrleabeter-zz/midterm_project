@@ -18,9 +18,12 @@ post '/' do
     url: params[:url]
   )
   @discount = Discount.new(
-    discount_percent:  params[:discount_percent]
+    company_id: @company.id,
+    discount_percent:  params[:discount_percent],
+    user_id: @user.id
   )
   @restriction = Restriction.new(
+    discount_id: @discount.id,
     description:  params[:description]
   )
   if @user.save && @company.save && @discount.save && @restriction.save

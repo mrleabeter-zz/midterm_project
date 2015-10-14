@@ -43,11 +43,11 @@
   </div>
   <div>
     <label>Discount Percent:</label>
-    <input type="text" name="discount_percent" value="<%= @discount && @discount.discount_percent %>">
+    <input type="integer" name="discount_percent" value="<%= @discount && @discount.discount_percent %>">
   </div>
   <div>
     <label>Discount Restriction:</label>
-    <input type="text" name="password" value="<%= @restriction && @restriction.description %>">
+    <input type="text" name="description" value="<%= @restriction && @restriction.description %>">
   </div>
   <div>
     <input type="submit" value="Submit">

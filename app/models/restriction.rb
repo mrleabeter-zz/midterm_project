@@ -4,6 +4,6 @@ class Restriction < ActiveRecord::Base
 
   validates :description,
               presence: true,
-              inclusion: { in: 5..50 }
+              length: { in: 5..50 }
 
 end
