@@ -23,7 +23,7 @@ post '/' do
   @restriction = Restriction.new(
     description:  params[:description]
   )
-  if @user.save && company.save && discount.save && restriction.save
+  if @user.save && @company.save && @discount.save && @restriction.save
     redirect '/user/signup_successful'
   else
     erb :index
