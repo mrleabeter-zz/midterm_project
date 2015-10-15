@@ -25,9 +25,8 @@ get '/user/:id' do
 end
 
 post '/' do
-  binding.pry
   @user = User.new(
-    username:   params[:username],
+    username:   params[:username].downcase,
     email: params[:email],
     password:  params[:password]
   )
@@ -69,7 +68,7 @@ end
 
 post '/user/login' do
   user = User.find_by(
-    username: params[:username],
+    username: params[:username].downcase,
     password: params[:password]
   )
   if user
