@@ -39,7 +39,7 @@
   </div>
   <div>
     <label>Company Website:</label>
-    <input type="text" name="url" value="<%= @company && @company.url %>">
+    <input type="text" name="url" value="http://" unless "<%= @company && @company.url %>">
   </div>
   <div>
     <label>Discount Percent:</label>
