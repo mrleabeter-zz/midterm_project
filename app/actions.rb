@@ -86,3 +86,8 @@ post '/user/login' do
   end
 end
 
+get '/stores' do
+
+  @companies = Company.all
+  erb :'stores/index'
+end
