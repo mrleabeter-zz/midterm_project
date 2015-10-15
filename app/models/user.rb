@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
               length: {maximum: 25}
   validates :password,
               presence: true,
-              length: { minimum: 6, message: 'Password must be at least 6 characters' }
+              length: { minimum: 6, message: 'must be at least 6 characters' }
   validates :email,
               presence: true,
               uniqueness: true
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
  private
 
  def valid_email?
-   errors.add(:email_not_valid, "This isn't a valid email.") unless email =~ /\A[\w+\-.]{3,}@[a-z\d\-.]{3,}\.[a-z]{2,}\z/i
+   errors.add(:email, "This isn't a valid email.") unless email =~ /\A[\w+\-.]{3,}@[a-z\d\-.]{3,}\.[a-z]{2,}\z/i
  end
 
 

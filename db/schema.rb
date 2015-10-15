@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20151014200028) do
   create_table "companies", force: :cascade do |t|
     t.string   "company_name"
     t.string   "url"
-    t.integer  "discount_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -24,7 +23,6 @@ ActiveRecord::Schema.define(version: 20151014200028) do
   create_table "discounts", force: :cascade do |t|
     t.integer  "company_id"
     t.integer  "discount_percent"
-    t.integer  "restriction_id"
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
