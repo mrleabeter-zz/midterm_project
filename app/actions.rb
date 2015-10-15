@@ -13,23 +13,24 @@ post '/' do
     email: params[:email],
     password:  params[:password]
   )
-  # @user.save
-  @company = Company.new(
-    company_name:   params[:company_name],
-    url: params[:url]
-  )
-  # @company.save
+  existing_company = Company.find_by(company_name:  params[:company_name])
+  if existing_company != nil
+    @company = existing_company
+  else
+    @company = Company.new(
+      company_name:   params[:company_name],
+      url: params[:url]
+    )
+  end
   @discount = Discount.new(
     company_id: @company.id,
     discount_percent:  params[:discount_percent],
     user_id: @user.id
   )
-  # @discount.save
   @restriction = Restriction.new(
     discount_id: @discount.id,
     description:  params[:description]
   )
-  # @restriction.save
   if @user.save && @company.save && @discount.save && @restriction.save
     redirect '/user/signup_successful'
   else
