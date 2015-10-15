@@ -13,6 +13,7 @@ post '/' do
     email: params[:email],
     password:  params[:password]
   )
+  @user.save
   existing_company = Company.find_by(company_name:  params[:company_name])
   if existing_company != nil
     @company = existing_company
@@ -21,19 +22,22 @@ post '/' do
       company_name:   params[:company_name],
       url: params[:url]
     )
+    @company.save
   end
   @discount = Discount.new(
     company_id: @company.id,
     discount_percent:  params[:discount_percent],
     user_id: @user.id
   )
+  @discount.save
   @restriction = Restriction.new(
     discount_id: @discount.id,
     description:  params[:description]
   )
-  if @user.save && @company.save && @discount.save && @restriction.save
-    redirect '/user/signup_successful'
-  else
+  @restriction.save
+  # if @user.save && @company.save && @discount.save && @restriction.save
+  #   redirect '/user/signup_successful'
+  # else
     erb :index
-  end
+  # end
 end
