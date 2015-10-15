@@ -9,10 +9,13 @@ get '/user/signup_successful'do
 end
 
 post '/' do
+  # @errors = []
+  # @errors << "not same password brooo" unless confirm_password
   @user = User.new(
     username:   params[:username],
     email: params[:email],
-    password:  params[:password]
+    password:  params[:password],
+    password_confirmation: params[:password_confirmation]
   )
   @user.save
 
@@ -46,3 +49,10 @@ post '/' do
     erb :index
   end
 end
+
+# def confirm_password
+#   # binding.pry
+#   unless params[:password] == params[:password_confirmation]
+#     redirect '/'
+#   end
+# end
