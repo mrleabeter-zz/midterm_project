@@ -1,0 +1,18 @@
+<h1>Oh hey <%= @user.username %>, this is your user profile page!!!</h1>
+
+<h3>>Password: <%= @user.password %></h3>
+
+<h3>Email: <%= @user.email %></h3>
+
+<ol>
+  <% @user.discounts.each do |discount| %>
+  <li>Company: <%= discount.company.company_name %> Discount: <%= discount.discount_percent %>%</li>
+    <ul>
+      <% discount.restrictions.each do |restriction| %>
+      <li><%= restriction.description %></li>
+      <% end %>
+      <li>**Make me a button to add restrictions!**</li>
+    </ul>
+  <% end %>
+  <li>**Make me a button to add discounts!**</li>
+</ol>
