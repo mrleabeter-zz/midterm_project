@@ -1,6 +1,10 @@
 # Homepage (Root path)
 get '/' do
-  erb :index
+  if session[:user_id]
+    redirect '/user/logged_in'
+  else
+    erb :index
+  end
 end
 
 get '/user/signup_successful'do
@@ -9,6 +13,11 @@ end
 
 get '/user/login' do
   erb :'user/login'
+end
+
+get '/users/logout' do
+  session[:user_id] = nil
+  redirect '/'
 end
 
 get '/user/:id' do
