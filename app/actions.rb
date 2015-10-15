@@ -92,8 +92,6 @@ post '/user/login' do
     erb :'user/login'
   end
 end
-<<<<<<< HEAD
-=======
 
 post '/user/update_profile' do
   @user = User.find(session[:user_id])
@@ -110,4 +108,3 @@ post '/user/update_profile' do
     erb :index
   end
 end
->>>>>>> update_delete_profile
