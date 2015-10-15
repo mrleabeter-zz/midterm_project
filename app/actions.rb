@@ -28,7 +28,8 @@ post '/' do
   @user = User.new(
     username:   params[:username].downcase,
     email: params[:email],
-    password:  params[:password]
+    password:  params[:password],
+    password_confirmation: params[:password_confirmation]
   )
   @user.save
 
