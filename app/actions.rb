@@ -3,7 +3,7 @@ require 'pry'
 
 get '/' do
   if session[:user_id]
-    erb :index
+    redirect '/user/profile'
   else
     erb :index
   end
@@ -85,4 +85,3 @@ post '/user/login' do
     erb :'user/login'
   end
 end
-
