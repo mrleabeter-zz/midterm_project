@@ -21,8 +21,7 @@ post '/' do
     @company = existing_company
   else
     @company = Company.new(
-      company_name:   params[:company_name],
-      url: params[:url]
+      company_name:   params[:company_name]
     )
     @company.save
   end
