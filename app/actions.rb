@@ -1,14 +1,31 @@
 # Homepage (Root path)
-require 'pry'
 get '/' do
-  erb :index
+  if session[:user_id]
+    redirect '/user/logged_in'
+  else
+    erb :index
+  end
 end
 
 get '/user/signup_successful'do
   erb :'user/signup_successful'
 end
 
+get '/user/login' do
+  erb :'user/login'
+end
+
+get '/users/logout' do
+  session[:user_id] = nil
+  redirect '/'
+end
+
+get '/user/:id' do
+  erb :'user/logged_in'
+end
+
 post '/' do
+  binding.pry
   @user = User.new(
     username:   params[:username],
     email: params[:email],
@@ -34,15 +51,31 @@ post '/' do
   )
   @discount.save
 
-  @restriction = Restriction.new(
-    discount_id: @discount.id,
-    description:  params[:description]
-  )
-  @restriction.save
+  restriction_description = params[:description]
+  if  restriction_description != "" || restriction_description != "none"
+    @restriction = Restriction.new(
+      discount_id: @discount.id,
+      description:  params[:description]
+    )
+    @restriction.save
+  end
 
-  if @user.save && @company.save && @discount.save && @restriction.save
+  if @user.save && @company.save && @discount.save
     redirect '/user/signup_successful'
   else
     erb :index
+  end
+end
+
+post '/user/login' do
+  user = User.find_by(
+    username: params[:username],
+    password: params[:password]
+  )
+  if user
+    session[:user_id] = user.id
+    redirect '/user/logged_in'
+  else
+    erb :'user/login'
   end
 end
