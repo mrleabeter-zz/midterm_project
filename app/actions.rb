@@ -1,15 +1,13 @@
 # Homepage (Root path)
-require 'pry'
-
 get '/' do
   if session[:user_id]
-    erb :index
+    redirect '/user/profile'
   else
     erb :index
   end
 end
 
-get '/user/signup_successful'do
+get '/user/signup_successful' do
   erb :'user/signup_successful'
 end
 
@@ -20,6 +18,10 @@ end
 get '/users/logout' do
   session[:user_id] = nil
   redirect '/'
+end
+
+get '/user/update_profile' do
+  erb :'user/update_profile'
 end
 
 get '/user/profile' do
@@ -80,9 +82,24 @@ post '/user/login' do
   )
   if user.authenticate(params[:password])
     session[:user_id] = user.id
-    redirect '/user/profile'
+    redirect '/user/logged_in'
   else
     erb :'user/login'
   end
 end
 
+post '/user/update_profile' do
+  @user = User.find(session[:user_id])
+  @user.update(
+    username:   params[:username].downcase,
+    email: params[:email],
+    password:  params[:password],
+    password_confirmation: params[:password_confirmation]
+  )
+  @user.save
+  if @user.save
+    redirect '/user/profile'
+  else
+    erb :index
+  end
+end
