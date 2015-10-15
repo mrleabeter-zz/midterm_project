@@ -16,11 +16,11 @@ get '/user/:id' do
 end
 
 post '/' do
-  binding.pry
   @user = User.new(
     username:   params[:username],
     email: params[:email],
-    password:  params[:password]
+    password:  params[:password],
+    password_confirmation: params[:password_confirmation]
   )
   @user.save
 
