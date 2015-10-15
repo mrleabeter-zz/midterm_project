@@ -1,7 +1,9 @@
 # Homepage (Root path)
+require 'pry'
+
 get '/' do
   if session[:user_id]
-    redirect '/user/logged_in'
+    erb :index
   else
     erb :index
   end
@@ -20,8 +22,13 @@ get '/users/logout' do
   redirect '/'
 end
 
+get '/user/profile' do
+  @user = User.find(session[:user_id])
+  erb :'user/profile'
+end
+
 get '/user/:id' do
-  erb :'user/logged_in'
+  erb :'user/profile'
 end
 
 post '/' do
@@ -73,8 +80,9 @@ post '/user/login' do
   )
   if user.authenticate(params[:password])
     session[:user_id] = user.id
-    redirect '/user/logged_in'
+    redirect '/user/profile'
   else
     erb :'user/login'
   end
 end
+

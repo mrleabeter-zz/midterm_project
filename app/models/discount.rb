@@ -2,6 +2,7 @@ class Discount < ActiveRecord::Base
 
   belongs_to :company
   belongs_to :user
+  has_many :restrictions
 
   validates :discount_percent,
               numericality: { only_integer: true},
