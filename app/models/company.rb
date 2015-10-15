@@ -4,8 +4,8 @@ class Company < ActiveRecord::Base
 
   validates :company_name,
               presence: true
-  validate :valid_company_url
 
+  validate :valid_company_url
 
 private
 

@@ -1,4 +1,5 @@
 # Homepage (Root path)
+require 'pry'
 get '/' do
   erb :index
 end
@@ -13,7 +14,9 @@ post '/' do
     email: params[:email],
     password:  params[:password]
   )
-  existing_company = Company.find_by(company_name:  params[:company_name])
+  @user.save
+
+  existing_company = Company.find_by(company_name: params[:company_name])
   if existing_company != nil
     @company = existing_company
   else
@@ -22,15 +25,21 @@ post '/' do
       url: params[:url]
     )
   end
+  @company.save
+
   @discount = Discount.new(
     company_id: @company.id,
     discount_percent:  params[:discount_percent],
     user_id: @user.id
   )
+  @discount.save
+
   @restriction = Restriction.new(
     discount_id: @discount.id,
     description:  params[:description]
   )
+  @restriction.save
+
   if @user.save && @company.save && @discount.save && @restriction.save
     redirect '/user/signup_successful'
   else
