@@ -70,9 +70,8 @@ end
 post '/user/login' do
   user = User.find_by(
     username: params[:username].downcase,
-    password: params[:password]
   )
-  if user
+  if user.authenticate(params[:password])
     session[:user_id] = user.id
     redirect '/user/logged_in'
   else
