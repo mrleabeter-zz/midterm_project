@@ -78,6 +78,10 @@ post '/user/login' do
     username: params[:username].downcase,
   )
   if user.authenticate(params[:password])
+    response.set_cookie 'user_session', {
+      value: params[:user_id],
+      max_age: 60000
+    }
     session[:user_id] = user.id
     redirect '/user/profile'
   else
