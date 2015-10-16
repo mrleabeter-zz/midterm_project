@@ -1,6 +1,6 @@
 <h1>Add another friggin restriction!</h1>
 
-<form method="post" action="/discount/:discount_id/restriction">
+<form method="post" action="/discount/<%= @discount.id %>/restriction">
   <div>
     <label>Discount Restriction:</label>
     <input type="text" name="description">

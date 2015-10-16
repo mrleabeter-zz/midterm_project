@@ -110,6 +110,7 @@ post '/user/update_profile' do
 end
 
 get '/discount/:discount_id/restriction' do
+  @discount = Discount.find(params[:discount_id])
   erb :'discount/add_restriction'
 end
 
