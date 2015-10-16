@@ -30,7 +30,7 @@ end
 get '/companies' do
   @companies = Company.with_discounts
   erb :'companies/index'
-end  
+end
 
 get '/companies/:company_id/discount' do
   @company = Company.find(params[:company_id])
@@ -122,10 +122,10 @@ post '/user/update_profile' do
   end
 end
 
-get '/user/:discount_id/restriction' do
-  @discount = Discount.find(params[:discount_id])
-  erb :'user/restriction'
-end
+# get '/user/:discount_id/restriction' do
+#   @discount = Discount.find(params[:discount_id])
+#   erb :'user/restriction'
+# end
 
 post '/user/:discount_id/restriction' do
   @discount = Discount.find(params[:discount_id])
@@ -142,10 +142,10 @@ post '/user/:discount_id/restriction' do
   end
 end
 
-get '/user/:user_id/discount' do
-  @user = User.find(params[:user_id])
-  erb :'user/discount'
-end
+# get '/user/:user_id/discount' do
+#   @user = User.find(params[:user_id])
+#   erb :'user/discount'
+# end
 
 post '/user/:user_id/discount' do
   @user = User.find(session[:user_id])
