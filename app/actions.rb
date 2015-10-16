@@ -33,6 +33,12 @@ get '/user/:id' do
   erb :'user/profile'
 end
 
+get '/users/delete' do
+  @user = User.find(session[:user_id])
+  @user.destroy
+  redirect '/users/logout'    
+end
+
 post '/' do
   @user = User.new(
     username:   params[:username].downcase,
@@ -97,6 +103,7 @@ get '/stores' do
   @companies = Company.all
   erb :'stores/index'
 end  
+ 
 
 post '/user/update_profile' do
   @user = User.find(session[:user_id])
@@ -113,3 +120,12 @@ post '/user/update_profile' do
     erb :index
   end
 end
+
+
+
+
+
+
+
+
+

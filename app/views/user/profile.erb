@@ -7,6 +7,7 @@
 </div>
 
 <div>
+
   <h4>Discounts:</h4>
   <ol>
     <% @user.discounts.each do |discount| %>
@@ -22,4 +23,11 @@
     <% end %>
     <li><a href="no_link_yet">**Add JS to Add More Discounts!**</a></li>
   </ol>
+</div>
+
+<a href="/users/logout">Logout</a>
+
+<div>
+<h5>Delete Your Profile<h5>
+<a href="/users/delete" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
 </div>
