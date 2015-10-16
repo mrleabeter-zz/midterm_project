@@ -5,4 +5,8 @@ class Company < ActiveRecord::Base
   validates :company_name,
               presence: true
 
+  scope :with_discounts, -> { includes(discounts: :user)
+    .where.not(users: { id: nil})
+    .where.not(discounts: { id: nil }) }            
+
 end
