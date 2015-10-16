@@ -7,5 +7,7 @@ class Discount < ActiveRecord::Base
   validates :discount_percent,
               numericality: { only_integer: true},
               inclusion: { in: 1..100, message: "must be between 1 and 100"}
+  scope :with_user, -> { includes(:user)
+    .where.not( users:{id: nil}) }
 
 end

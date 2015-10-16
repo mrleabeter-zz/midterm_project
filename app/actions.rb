@@ -27,21 +27,15 @@ get '/user/profile' do
   erb :'user/profile'
 end
 
-get '/stores' do
-  @companies = Company.all
-  erb :'stores/index'
-end
+get '/companies' do
+  @companies = Company.with_discounts
+  erb :'companies/index'
+end  
 
-# for testing
-get '/stores/:company_id/discount' do
+get '/companies/:company_id/discount' do
   @company = Company.find(params[:company_id])
-  erb :'stores/discount'
+  erb :'companies/discount'
 end
-# for testing
-
-# get '/link_goes_here/:company_id' do
-#   @company = Company.find(params[:company_id])
-# end
 
 get '/user/:id' do
   erb :'user/profile'
