@@ -132,14 +132,16 @@ end
 
 post '/user/:discount_id/restriction' do
   @discount = Discount.find(params[:discount_id])
-  @restriction = Restriction.new(
-    discount_id: @discount.id,
-    description: params[:description]
-    )
-  if @restriction.save
+  restriction_description = params[:description]
+  if restriction_description != ""
+    @restriction = Restriction.new(
+      discount_id: @discount.id,
+      description: params[:description]
+      )
+    @restriction.save
     redirect '/user/profile'
   else
-    '/user/:discount_id/restriction'
+    redirect "/user/#{@discount.id}/restriction"
   end
 end
 
