@@ -2,10 +2,15 @@ li {
   list-style: none;
 }
 
-.profile-btn {
+.add-btn {
   width: 100%;
 }
 
 .add-more {
   display: none;
+}
+
+i {
+  cursor: pointer;
+  cursor: hand;
 }

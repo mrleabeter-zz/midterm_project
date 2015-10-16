@@ -40,7 +40,8 @@
           </tbody>
         </table>
 
-        <a id="show-form" class="waves-effect waves-light btn profile-btn">Add More</a>
+        <i id="show-form" class="small material-icons">note_add</i>
+        <i id="hide-form" class="small material-icons">https</i>
 
         <form class="col s12 add-more" method="post" action="/">
           <div class="row">
@@ -49,18 +50,20 @@
               <input type="text" name="company_name" value="<%= @company && @company.company_name %>">
             </div>
           </div>
+
           <div class="row">
             <div class="input-field col s12">
               <label>Discount Percent:</label>
               <input type="text" name="discount_percent" value="<%= @discount && @discount.discount_percent %>">
             </div>
           </div>
+
           <div class="row">
             <div class="input-field col s12">
               <label>Discount Restriction:</label>
               <input type="text" name="description" value="<%= @restriction && @restriction.description %>">
+              <button class="btn waves-effect waves-light add-btn" type="submit" name="action">Submit</button>
             </div>
-            <a id="hide-form" class="waves-effect waves-light btn profile-btn">Cancel</a>
           </div>
         </form>
 
