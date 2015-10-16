@@ -16,3 +16,11 @@ i {
   cursor: pointer;
   cursor: hand;
 }
+
+.modal {
+  color: black;
+}
+
+.modal-action.modal-close.waves-effect.waves-green.btn-flat {
+  color: white;
+}

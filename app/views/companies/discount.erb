@@ -3,7 +3,6 @@
 <h1><%= @company.company_name %></h1>
 
 <div>
-
     <% @company.discounts.with_user.each do |discount| %>
     <strong>User:</strong>  <%= discount.user.username %>
     <strong>Company:</strong>  <%= discount.company.company_name %>
@@ -13,5 +12,5 @@
             <li><%= restriction.description %></li>
             <% end %>
           <% end %>
-    <% end %>      
+    <% end %>
 </div>

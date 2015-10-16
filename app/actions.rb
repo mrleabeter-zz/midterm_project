@@ -22,8 +22,8 @@ end
 
 get '/user/profile' do
   @discounts = Discount.all
-  @user = User.find(session[:user_id])
   @companies = Company.all
+  @user = User.find(session[:user_id])
   erb :'user/profile'
 end
 
@@ -39,11 +39,6 @@ end
 
 get '/user/:id' do
   erb :'user/profile'
-end
-
-get '/stores' do
-  @companies = Company.all
-  erb :'stores/index'
 end
 
 post '/' do
