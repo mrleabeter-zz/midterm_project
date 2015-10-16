@@ -1,17 +1,25 @@
-<h1>Oh hey <%= @user.username %>, this is your user profile page!!!</h1>
+<h1>Oh hey <%= @user.username.capitalize %>, this is your user profile page!!!</h1>
 
-<a href="/users/logout">Click here to log out</a>
-<h3>Email: <%= @user.email %></h3>
+<div>
+  <img src="/public/img/person_placeholder.png" height="50" width="50">
+  <a href="no_link_link">Add a picture</a>
+  <h3>Email: <%= @user.email %></h3>
+</div>
 
-<ol>
-  <% @user.discounts.each do |discount| %>
-  <li>Company: <%= discount.company.company_name %> Discount: <%= discount.discount_percent %>%</li>
-    <ul>
-      <% discount.restrictions.each do |restriction| %>
-      <li><%= restriction.description %></li>
-      <% end %>
-      <li>**Make me a button to add restrictions!**</li>
-    </ul>
-  <% end %>
-  <li>**Make me a button to add discounts!**</li>
-</ol>
+<div>
+  <h4>Discounts:</h4>
+  <ol>
+    <% @user.discounts.each do |discount| %>
+    <li><strong>Company:</strong>  <%= discount.company.company_name %> <strong>Discount:</strong> <%= discount.discount_percent %>%</li>
+        <ul>
+          <% if discount.restrictions.count >= 1 %>
+            <% discount.restrictions.each do |restriction| %>
+            <li><%= restriction.description %></li>
+            <% end %>
+          <% end %>
+            <li><a href="no_link_yet">**Add JS to Add More Restrictions!**</a></li>
+        </ul>
+    <% end %>
+    <li><a href="no_link_yet">**Add JS to Add More Discounts!**</a></li>
+  </ol>
+</div>
