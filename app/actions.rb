@@ -154,7 +154,7 @@ get '/user/:user_id/discount' do
 end
 
 post '/user/:user_id/discount' do
-  @user = User.find(params[:user_id])
+  @user = User.find(session[:user_id])
 
   @existing_company = Company.find_by(company_name: params[:company_name])
   if @existing_company
