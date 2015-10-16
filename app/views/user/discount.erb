@@ -1,10 +1,16 @@
 <h1>Add another gosh darn discount!!!</h1>
 
-<% if (@company && @company.errors.any?) %>
+<% if (@company && @company.errors.any?) || (@discount && @discount.errors.any?) || (@restriction && @restriction.errors.any?) %>
   <div>
     <strong>Some issues with your form, please fix them:</strong>
     <ul>
       <% @company.errors.full_messages.each do |message| %>g
+      <li><%= message %></li>
+      <% end %>
+      <% @discount.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      <% @restriction.errors.full_messages.each do |message| %>
       <li><%= message %></li>
       <% end %>
     </ul>
