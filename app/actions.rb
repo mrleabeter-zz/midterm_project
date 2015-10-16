@@ -113,3 +113,58 @@ post '/user/update_profile' do
     erb :index
   end
 end
+
+get '/user/:discount_id/restriction' do
+  @discount = Discount.find(params[:discount_id])
+  erb :'user/restriction'
+end
+
+post '/user/:discount_id/restriction' do
+  @discount = Discount.find(params[:discount_id])
+  @restriction = Restriction.new(
+    discount_id: @discount.id,
+    description: params[:description]
+    )
+  if @restriction.save
+    redirect '/user/profile'
+  else
+    '/user/:discount_id/restriction'
+  end
+end
+
+get '/user/:user_id/discount' do
+  @user = User.find(params[:user_id])
+  erb :'user/discount'
+end
+
+post '/user/:user_id/discount' do
+  @user = User.find(params[:user_id])
+
+  @existing_company = Company.find_by(company_name: params[:company_name])
+  if @existing_company
+    return erb :'user/discount'
+  else
+    @company = Company.new(
+      company_name:   params[:company_name]
+    )
+    @company.save
+  end
+
+  @discount = Discount.new(
+    user_id: @user.id,
+    company_id: @company.id,
+    discount_percent: params[:discount_percent]
+    )
+
+  if @company.save
+    @discount.save
+    @restriction = Restriction.new(
+      discount_id: @discount.id,
+      description: params[:description]
+      )
+    @restriction.save
+    redirect '/user/profile'
+  else
+    "/user/#{@user.id}/discount"
+  end
+end
