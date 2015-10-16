@@ -108,10 +108,6 @@ post '/user/login' do
   end
 end
 
-get '/stores' do
-  @companies = Company.all
-  erb :'stores/index'
-end  
  
 post '/user/update_profile' do
   @user = User.find(session[:user_id])
