@@ -43,10 +43,6 @@
           <i id="show-form" class="small material-icons">note_add</i>
           <i id="hide-form" class="small material-icons">https</i>
 
-          <% @discounts.each do |discount| %>
-            <% @discount = discount %>
-          <% end %>
-
           <form class="col s12 add-more" method="post" action="/user/:user_id/discount">
             <div class="input-field col s12">
               <label>Company Name:</label>
