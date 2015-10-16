@@ -1,31 +1,20 @@
 <form method="get" action="/stores/discount">
 
-<h1>Store Name</h1>
+<h1><%= @company.company_name %></h1>
 
 <div>
-  <h4>Discounts:</h4>
-  <ol>
+
     <% @company.discounts.each do |discount| %>
-    <li><strong>User:</strong>  <%= discount.user.username %> 
-    <li><strong>Company:</strong>  <%= discount.company.company_name %>
-    <strong>Discount:</strong> <%= discount.discount_percent %>%</li>
-        <ul>
+    <strong>User:</strong>  <%= discount.user.username %>
+    <strong>Company:</strong>  <%= discount.company.company_name %>
+    <strong>Discount:</strong> <%= discount.discount_percent %>
           <% if discount.restrictions.count >= 1 %>
             <% discount.restrictions.each do |restriction| %>
             <li><%= restriction.description %></li>
             <% end %>
           <% end %>
-  </ol>
+    <% end %>      
 </div>
-
-
-
-
-
-
-
-
-
 
 <!--     <% @company.discounts.each do |discount| %>
     <li><strong>Company:</strong>  <%= discount.company.company_name %> <strong>Discount:</strong> <%= discount.discount_percent %>%</li>

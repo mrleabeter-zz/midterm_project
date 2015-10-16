@@ -1,0 +1,13 @@
+<h1>Add another friggin restriction!</h1>
+
+<form method="post" action="/user/<%= @discount.id %>/restriction">
+  <div>
+    <label>Discount Restriction:</label>
+    <input type="text" name="description">
+  </div>
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+</form>
+
+<a href="/user/profile">Back to profile</a>
