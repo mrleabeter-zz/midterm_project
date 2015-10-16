@@ -15,7 +15,12 @@
     <div class="col s4">
       <div class="card black">
         <div class="card-content white-text">
-          <span class="card-title"><%= @user.username.capitalize %></span>
+          <span class="card-title"><%= @user.username.capitalize %>
+          <div class="right-align">
+          <h6>Delete Your Profile</h6>
+          <a href="/users/delete" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
+        </div>
+        </span>
           <table>
             <thead>
               <tr>
@@ -82,8 +87,5 @@
   </div>
 </div>
 
-<div>
-<h5>Delete Your Profile<h5>
-<a href="/users/delete" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
-</div>
+
 

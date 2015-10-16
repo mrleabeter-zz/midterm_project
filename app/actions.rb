@@ -45,7 +45,7 @@ end
 get '/users/delete' do
   @user = User.find(session[:user_id])
   @user.destroy
-  redirect '/users/logout'    
+  redirect '/user/logout'    
 end
 
 post '/' do
