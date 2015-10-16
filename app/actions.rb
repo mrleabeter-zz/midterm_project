@@ -59,7 +59,7 @@ post '/' do
   @discount.save
 
   restriction_description = params[:description]
-  if  restriction_description != "" || restriction_description != "none"
+  if  restriction_description != ""
     @restriction = Restriction.new(
       discount_id: @discount.id,
       description:  params[:description]
