@@ -1,25 +1,45 @@
-<h1>Oh hey <%= @user.username.capitalize %>, this is your user profile page!!!</h1>
+<nav>
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo">Discount Sharing</a>
+    <ul id="nav-mobile" class="right">
+      <% if session[:user_id] %>
+        <li><a href="/user/logout">Logout</a></li>
+      <% else %>
+        <li><a href="user/login">Login</a></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
 
-<div>
-  <img src="/public/img/person_placeholder.png" height="50" width="50">
-  <a href="no_link_link">Add a picture</a>
-  <h3>Email: <%= @user.email %></h3>
-</div>
+<div class="row">
+  <div class="col s12 m3">
+    <div class="card yellow darken-4">
+      <div class="card-content white-text">
+        <span class="card-title"><%= @user.username.capitalize %></span>
+        <table>
+          <thead>
+            <tr>
+              <th data-field="company">Company</th>
+              <th data-field="Discount">Discount</th>
+              <th data-field="Restrictions">Restrictions</th>
+            </tr>
+          </thead>
 
-<div>
-  <h4>Discounts:</h4>
-  <ol>
-    <% @user.discounts.each do |discount| %>
-    <li><strong>Company:</strong>  <%= discount.company.company_name %> <strong>Discount:</strong> <%= discount.discount_percent %>%</li>
-        <ul>
-          <% if discount.restrictions.count >= 1 %>
-            <% discount.restrictions.each do |restriction| %>
-            <li><%= restriction.description %></li>
+          <tbody>
+            <% @user.discounts.each do |discount| %>
+            <tr>
+              <td><%= discount.company.company_name %></td>
+              <td><%= discount.discount_percent %></td>
+              <td><% if discount.restrictions.count >= 1 %>
+                <% discount.restrictions.each do |restriction| %>
+                  <%= restriction.description %>
+                <% end %>
+              <% end %></td>
+            </tr>
             <% end %>
-          <% end %>
-            <li><a href="no_link_yet">**Add JS to Add More Restrictions!**</a></li>
-        </ul>
-    <% end %>
-    <li><a href="no_link_yet">**Add JS to Add More Discounts!**</a></li>
-  </ol>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

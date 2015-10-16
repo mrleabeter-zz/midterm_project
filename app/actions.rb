@@ -7,10 +7,6 @@ get '/' do
   end
 end
 
-# get '/user/signup_successful' do
-#   erb :'user/signup_successful'
-# end
-
 get '/user/login' do
   erb :'user/login'
 end
@@ -92,7 +88,7 @@ post '/user/login' do
       max_age: 60000
     }
     session[:user_id] = user.id
-    redirect '/user/logged_in'
+    redirect '/user/profile'
   else
     erb :'user/login'
   end
