@@ -109,12 +109,12 @@ post '/user/update_profile' do
   end
 end
 
-get '/discount/:discount_id/restriction' do
+get '/user/:discount_id/restriction' do
   @discount = Discount.find(params[:discount_id])
-  erb :'discount/add_restriction'
+  erb :'user/restriction'
 end
 
-post '/discount/:discount_id/restriction' do
+post '/user/:discount_id/restriction' do
   @discount = Discount.find(params[:discount_id])
   @restriction = Restriction.new(
     discount_id: @discount.id,
@@ -123,6 +123,44 @@ post '/discount/:discount_id/restriction' do
   if @restriction.save
     redirect '/user/profile'
   else
-    '/discount/:discount_id/restriction'
+    '/user/:discount_id/restriction'
+  end
+end
+
+get '/user/:user_id/discount' do
+  @user = User.find(params[:user_id])
+  erb :'user/discount'
+end
+
+post '/user/:user_id/discount' do
+  @user = User.find(params[:user_id])
+
+  existing_company = Company.find_by(company_name: params[:company_name])
+  if existing_company != nil
+    @company = existing_company
+  else
+    @company = Company.new(
+      company_name:   params[:company_name]
+    )
+    @company.save
+  end
+
+  @discount = Discount.new(
+    user_id: @user.id,
+    company_id: @company.id,
+    discount_percent: params[:discount_percent]
+    )
+  @discount.save
+
+  @restriction = Restriction.new(
+    discount_id: @discount.id,
+    description: params[:description]
+    )
+  @restriction.save
+
+  if @discount.save
+    redirect '/user/profile'
+  else
+    '/user/:user_id/discount'
   end
 end
