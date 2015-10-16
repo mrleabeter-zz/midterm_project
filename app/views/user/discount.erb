@@ -1,5 +1,23 @@
 <h1>Add another gosh darn discount!!!</h1>
 
+<% if (@company && @company.errors.any?) %>
+  <div>
+    <strong>Some issues with your form, please fix them:</strong>
+    <ul>
+      <% @company.errors.full_messages.each do |message| %>g
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<% if @existing_company %>
+  <div>
+    <strong>Some issues with your form, please fix them:</strong>
+    <ul>
+      <li>You already have a discount with this company. Please update your existing discount.</li>
+    </ul>
+<% end %>
+
 <form method="post" action="/user/<%= @user.id %>/discount">
   <div>
     <label>Company Name:</label>
@@ -17,3 +35,5 @@
     <input type="submit" value="Submit">
   </div>
 </form>
+
+<a href="/user/profile">Back to profile</a>
