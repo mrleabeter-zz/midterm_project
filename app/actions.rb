@@ -108,3 +108,12 @@ post '/user/update_profile' do
     erb :index
   end
 end
+
+post 'user/discount/add_restriction/:discount_id' do
+  @restriction = Restriction.new(
+    id: params[:discount_id],
+    description: params[:description]
+    )
+  @restriction.save
+  redirect '/user/profile'
+end
