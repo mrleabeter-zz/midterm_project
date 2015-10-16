@@ -29,6 +29,22 @@ get '/user/profile' do
   erb :'user/profile'
 end
 
+get '/stores' do
+  @companies = Company.all
+  erb :'stores/index'
+end  
+
+# for testing
+get '/stores/discount' do
+  @company = Company.find(params[:company_id])
+  erb :'stores/index/discount'
+end
+# for testing
+
+# get '/link_goes_here/:company_id' do
+#   @company = Company.find(params[:company_id])
+# end
+
 get '/user/:id' do
   erb :'user/profile'
 end
@@ -93,11 +109,6 @@ post '/user/login' do
   end
 end
 
-get '/stores' do
-  @companies = Company.all
-  erb :'stores/index'
-end  
-
 post '/user/update_profile' do
   @user = User.find(session[:user_id])
   @user.update(
@@ -113,3 +124,4 @@ post '/user/update_profile' do
     erb :index
   end
 end
+
