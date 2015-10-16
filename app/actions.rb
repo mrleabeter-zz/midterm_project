@@ -22,6 +22,7 @@ end
 
 get '/user/profile' do
   @user = User.find(session[:user_id])
+  @companies = Company.all
   erb :'user/profile'
 end
 
