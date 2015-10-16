@@ -16,3 +16,7 @@ i {
   cursor: pointer;
   cursor: hand;
 }
+
+#profile {
+  margin-top: 10%;
+}
