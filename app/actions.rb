@@ -178,6 +178,6 @@ post '/user/:user_id/discount' do
     @restriction.save
     redirect '/user/profile'
   else
-    "/user/#{@user.id}/discount"
+    redirect "/user/#{@user.id}/discount"
   end
 end
