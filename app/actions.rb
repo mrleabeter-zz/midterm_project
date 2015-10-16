@@ -109,11 +109,19 @@ post '/user/update_profile' do
   end
 end
 
-post 'user/discount/add_restriction/:discount_id' do
+get '/discount/:discount_id/restriction' do
+  erb :'discount/add_restriction'
+end
+
+post '/discount/:discount_id/restriction' do
+  @discount = Discount.find(params[:discount_id])
   @restriction = Restriction.new(
-    id: params[:discount_id],
+    discount_id: @discount.id,
     description: params[:description]
     )
-  @restriction.save
-  redirect '/user/profile'
+  if @restriction.save
+    redirect '/user/profile'
+  else
+    '/discount/:discount_id/restriction'
+  end
 end
