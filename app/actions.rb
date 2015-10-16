@@ -7,9 +7,9 @@ get '/' do
   end
 end
 
-get '/user/signup_successful' do
-  erb :'user/signup_successful'
-end
+# get '/user/signup_successful' do
+#   erb :'user/signup_successful'
+# end
 
 get '/user/login' do
   erb :'user/login'
@@ -31,6 +31,11 @@ end
 
 get '/user/:id' do
   erb :'user/profile'
+end
+
+get '/stores' do
+  @companies = Company.all
+  erb :'stores/index'
 end
 
 post '/' do
@@ -71,7 +76,7 @@ post '/' do
   end
 
   if @user.save && @company.save && @discount.save
-    redirect '/user/signup_successful'
+    redirect '/'
   else
     erb :index
   end
@@ -91,11 +96,6 @@ post '/user/login' do
   else
     erb :'user/login'
   end
-end
-
-get '/stores' do
-  @companies = Company.all
-  erb :'stores/index'
 end
 
 post '/user/update_profile' do
