@@ -1,33 +1,89 @@
-<h1>Oh hey <%= @user.username.capitalize %>, this is your user profile page!!!</h1>
+<nav>
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo">Discount Sharing</a>
+    <ul id="nav-mobile" class="right">
+      <% if session[:user_id] %>
+        <li><a href="/user/logout">Logout</a></li>
+      <% else %>
+        <li><a href="user/login">Login</a></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
 
-<div>
-  <img src="/public/img/person_placeholder.png" height="50" width="50">
-  <a href="no_link_link">Add a picture</a>
-  <h3>Email: <%= @user.email %></h3>
-</div>
+  <div class="row">
+    <div class="col s4">
+      <div class="card black">
+        <div class="card-content white-text">
+          <span class="card-title"><%= @user.username.capitalize %></span>
+          <table>
+            <thead>
+              <tr>
+                <th data-field="Company">Company</th>
+                <th data-field="Discount">Discount</th>
+                <th data-field="Restrictions">Restrictions</th>
+              </tr>
+            </thead>
 
-<div>
+            <tbody>
+              <% @user.discounts.each do |discount| %>
+              <tr>
+                <td><%= discount.company.company_name %></td>
+                <td><%= discount.discount_percent %></td>
+                <td><% if discount.restrictions.count >= 1 %>
+                  <% discount.restrictions.each do |restriction| %>
+                    <%= restriction.description %>
+                  <% end %>
+                <% end %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
 
-  <h4>Discounts:</h4>
-  <ol>
-    <% @user.discounts.each do |discount| %>
-    <li><strong>Company:</strong>  <%= discount.company.company_name %> <strong>Discount:</strong> <%= discount.discount_percent %>%</li>
-        <ul>
-          <% if discount.restrictions.count >= 1 %>
-            <% discount.restrictions.each do |restriction| %>
-            <li><%= restriction.description %></li>
-            <% end %>
-          <% end %>
-            <li><a href="no_link_yet">**Add JS to Add More Restrictions!**</a></li>
-        </ul>
+          <i id="show-form" class="small material-icons">note_add</i>
+          <i id="hide-form" class="small material-icons">https</i>
+
+          <form class="col s12 add-more" method="post" action="/user/:user_id/discount">
+            <div class="input-field col s12">
+              <label>Company Name:</label>
+              <input type="text" name="company_name" value="<%= @company && @company.company_name %>">
+            </div>
+
+            <div class="input-field col s12">
+              <label>Discount Percent:</label>
+              <input type="text" name="discount_percent">
+            </div>
+            
+            <div class="input-field col s12">
+              <label>Discount Restriction:</label>
+              <input type="text" name="description" value="<%= @restriction && @restriction.description %>">
+            </div>
+
+            <button class="btn waves-effect waves-light add-btn" type="submit" name="action">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  <div class="col s8">
+    <% @companies.each do |company| %>
+    <div class="col s4">
+      <div class="card black">
+        <div class="card-content white-text">
+          <span class="card-title"><%= company.company_name.truncate(21) %></span>
+        </div>
+
+        <div class="card-action">
+          <a href="/companies/:company_id/discount">Details</a>
+        </div>
+      </div>
+    </div>
     <% end %>
-    <li><a href="no_link_yet">**Add JS to Add More Discounts!**</a></li>
-  </ol>
+  </div>
 </div>
-
-<a href="/users/logout">Logout</a>
 
 <div>
 <h5>Delete Your Profile<h5>
 <a href="/users/delete" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
 </div>
+

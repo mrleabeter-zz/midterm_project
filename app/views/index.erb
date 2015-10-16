@@ -1,56 +1,96 @@
-<h1>Discount Sharing</h1>
-<a href=/user/login>Login</a href>
-
-<% if (@user && @user.errors.any?) || (@company && @company.errors.any?) || (@discount && @discount.errors.any?) || (@restriction && @restriction.errors.any?) %>
-  <div>
-    <strong>Some issues with your form, please fix them:</strong>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>g
-      <li><%= message %></li>
-      <% end %>
-      <% @company.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-      <% @discount.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-      <% @restriction.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+<nav>
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo">Discount Sharing</a>
+    <ul id="nav-mobile" class="right">
+      <% if session[:user_id] %>
+        <li><a href="user/logout">Logout</a></li>
+      <% else %>
+        <li><a href="user/login">Login</a></li>
       <% end %>
     </ul>
   </div>
-<% end %>
+</nav>
 
-<form method="post" action="/">
-  <div>
-    <label>Username:</label>
-    <input type="text" name="username" value="<%= @user && @user.username %>">
+<div class="container">
+  <div class="row about">
+    <div class="col s6">
+        <h2>About</h2>
+        <p>Bacon ipsum dolor amet drumstick beef ribs shankle prosciutto spare
+          ribs. Alcatra turducken kielbasa pancetta pastrami. Pastrami doner
+          porchetta sausage chicken fatback pork chop swine cupim salami short
+          loin shankle shoulder jowl picanha. Shank jerky fatback bacon pig.
+          Pork chop jowl pork loin, turkey pastrami ham bacon fatback hamburger
+          kielbasa shank chicken ball tip. Shoulder hamburger cupim picanha
+          frankfurter short ribs meatball pastrami tongue short loin flank
+          turkey spare ribs.
+        </p>
+        <% if (@user && @user.errors.any?) || (@company && @company.errors.any?) || (@discount && @discount.errors.any?) || (@restriction && @restriction.errors.any?) %>
+          <div>
+            <h5>Some issues with your form, please fix them:</h4>
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+              <% @company.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+              <% @discount.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+    </div>
+
+    <div class="col s6">
+      <h2>Signup</h2>
+      <form class="col s12" method="post" action="/">
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="username" >Username:</label>
+            <input id="username" class="validates" type="text" name="username" value="<%= @user && @user.username %>">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <label>Email:</label>
+            <input type="text" name="email" value="<%= @user && @user.email %>">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <label>Password:</label>
+            <input type="password" name="password" value="<%= @user && @user.password %>">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <label>Password Confirmation:</label>
+            <input type="password" name="password_confirmation" value="<%= @user && @user.password %>">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <label>Company Name:</label>
+            <input type="text" name="company_name" value="<%= @company && @company.company_name %>">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <label>Discount Percent:</label>
+            <input type="text" name="discount_percent" value="<%= @discount && @discount.discount_percent %>">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <label>Discount Restriction:</label>
+            <input type="text" name="description" value="<%= @restriction && @restriction.description %>">
+          </div>
+        </div>
+        <div>
+          <button class="btn waves-effect waves-light" type="submit" name="action">Signup!</button>
+        </div>
+      </form>
+    </div>
   </div>
-  <div>
-    <label>Email:</label>
-    <input type="text" name="email" value="<%= @user && @user.email %>">
-  </div>
-  <div>
-    <label>Password:</label>
-    <input type="password" name="password" value="<%= @user && @user.password %>">
-  </div>
-  <div>
-    <label>Password Confirmation:</label>
-    <input type="password" name="password_confirmation" value="<%= @user && @user.password %>">
-  </div>
-  <div>
-    <label>Company Name:</label>
-    <input type="text" name="company_name" value="<%= @company && @company.company_name %>">
-  </div>
-  <div>
-    <label>Discount Percent:</label>
-    <input type="integer" name="discount_percent" value="<%= @discount && @discount.discount_percent %>">
-  </div>
-  <div>
-    <label>Discount Restriction:</label>
-    <input type="text" name="description" value="<%= @restriction && @restriction.description %>">
-  </div>
-  <div>
-    <input type="submit" value="Submit">
-  </div>
-</form>
+</div>
