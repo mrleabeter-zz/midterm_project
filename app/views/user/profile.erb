@@ -13,7 +13,7 @@
 
 <div class="row">
   <div class="col s12 m3">
-    <div class="card yellow darken-4">
+    <div class="card black">
       <div class="card-content white-text">
         <span class="card-title"><%= @user.username.capitalize %></span>
         <table>
@@ -39,6 +39,31 @@
             <% end %>
           </tbody>
         </table>
+
+        <a id="show-form" class="waves-effect waves-light btn profile-btn">Add More</a>
+
+        <form class="col s12 add-more" method="post" action="/">
+          <div class="row">
+            <div class="input-field col s12">
+              <label>Company Name:</label>
+              <input type="text" name="company_name" value="<%= @company && @company.company_name %>">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <label>Discount Percent:</label>
+              <input type="text" name="discount_percent" value="<%= @discount && @discount.discount_percent %>">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <label>Discount Restriction:</label>
+              <input type="text" name="description" value="<%= @restriction && @restriction.description %>">
+            </div>
+            <a id="hide-form" class="waves-effect waves-light btn profile-btn">Cancel</a>
+          </div>
+        </form>
+
       </div>
     </div>
   </div>
