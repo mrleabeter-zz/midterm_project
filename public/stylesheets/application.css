@@ -24,6 +24,16 @@ i {
   cursor: hand;
 }
 
+.hide-add-discount-form {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.hide-add-restriction-form {
+  cursor: pointer;
+  cursor: hand;
+}
+
 #profile {
   margin-top: 10%;
 }
@@ -61,6 +71,10 @@ i {
 
 .card .card-action a:hover {
   color: black;
+}
+
+.card.add-form {
+  background-color: #2C3E50;
 }
 
 .modal-action.modal-close.waves-effect.waves-green.btn-flat {

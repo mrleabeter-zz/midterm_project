@@ -1,16 +1,40 @@
-<form method="get" action="/companies/discount">
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <div class="card black">
+        <div class="card-content white-text">
+          <span class="card-title"><%= @company.company_name.capitalize %></span>
+          <table>
+            <thead>
+              <tr>
+                <th data-field="User">User:</th>
+                <th data-field="Company">Company:</th>
+                <th data-field="Discount">Discount:</th>
+                <th data-field="Restrictions">Restrictions:</th>
+                <th data-field="Contact">Contact:</th>
+              </tr>
+            </thead>
 
-<h1><%= @company.company_name %></h1>
-
-<div>
-    <% @company.discounts.with_user.each do |discount| %>
-    <strong>User:</strong>  <%= discount.user.username %>
-    <strong>Company:</strong>  <%= discount.company.company_name %>
-    <strong>Discount:</strong> <%= discount.discount_percent %>
-          <% if discount.restrictions.count >= 1 %>
-            <% discount.restrictions.each do |restriction| %>
-            <li><%= restriction.description %></li>
-            <% end %>
-          <% end %>
-    <% end %>
+            <tbody>
+              <% @company.discounts.with_user.each do |discount| %>
+              <tr>
+                <td><%= discount.user.username %></td>
+                <td><%= discount.company.company_name %></td>
+                <td><%= discount.discount_percent %></td>
+                <td><% if discount.restrictions.count >= 1 %>
+                  <ul><% discount.restrictions.each do |restriction| %>
+                    <li><%= restriction.description %></li>
+                  <% end %>
+                  </ul>
+                <% end %></td>
+                <td></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <button>Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

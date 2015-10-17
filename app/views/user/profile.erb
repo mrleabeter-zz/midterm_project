@@ -1,50 +1,53 @@
-  <div class="row">
+<div class="row">
+  <div class="col s4">
+    <div class="card add-form">
     <div class="col s4">
-      <div class="card black">
-      <div class="col s4">
-      <img id="profile" src="/img/profile_pic.jpg" alt="" class="circle responsive-img" height="100px" width="100px">
-       </div>
-        <div class="card-content white-text">
-          <span class="card-title"><%= @user.username.capitalize %>
-          <div class="right-align">
-          <h6>Delete Your Profile</h6>
-          <a href="/users/delete" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
-        </div>
-        </span>
-          <table>
-            <thead>
-              <tr>
-                <th data-field="Company">Company</th>
-                <th data-field="Discount">Discount</th>
-                <th data-field="Restrictions">Restrictions</th>
-              </tr>
-            </thead>
+    <img id="profile" src="/img/profile_pic.jpg" alt="" class="circle responsive-img" height="100px" width="100px">
+     </div>
+      <div class="card-content white-text">
+        <span class="card-title"><%= @user.username.capitalize %>
+        <div class="right-align">
+        <h6>Delete Your Profile</h6>
+        <a href="/users/delete" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
+      </div>
+      </span>
+        <table>
+          <thead>
+            <tr>
+              <th data-field="Company">Company</th>
+              <th data-field="Discount">Discount</th>
+              <th data-field="Restrictions">Restrictions</th>
+            </tr>
+          </thead>
 
-            <tbody>
-              <% @user.discounts.each do |discount| %>
-              <tr>
-                <td><%= discount.company.company_name %></td>
-                <td><%= discount.discount_percent %></td>
-                <td><% if discount.restrictions.count >= 1 %>
-                  <ul><% discount.restrictions.each do |restriction| %>
-                    <li><%= restriction.description %></li>
-                  <% end %>
-                  <li><i data-id="<%= discount.id %>" class="show-add-restriction-form small material-icons" title="Add another restriction" >note_add</i><i class="hide-add-restriction-form small material-icons" title="Hide restriction form.">https</i></li>
-                  </ul>
-                <% end %></td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
+          <tbody>
+            <% @user.discounts.each do |discount| %>
+            <tr>
+              <td><%= discount.company.company_name %></td>
+              <td><%= discount.discount_percent %></td>
+              <td><% if discount.restrictions.count >= 1 %>
+                <ul><% discount.restrictions.each do |restriction| %>
+                  <li><%= restriction.description %></li>
+                <% end %>
+                <li>
+                  <i data-id="<%= discount.id %>" class="show-add-restriction-form small material-icons" title="Add another restriction">note_add</i>
+                  <img id="hide-add-restriction-form" class="hide-add-restriction-form" src="/img/x.svg" width="29px" height="29px">
+                </li>
+                </ul>
+              <% end %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-          <i id="show-add-discount-form" class="small material-icons" title="Add another discount" >note_add</i>
-          <i id="hide-add-discount-form" class="small material-icons" title="Hide discount form.">https</i>
+        <i id="show-add-discount-form" class="small material-icons" title="Add another discount">note_add</i>
+        <img id="hide-add-discount-form" class="hide-add-discount-form" src="/img/x.svg" width="29px" height="29px">
 
-          <form class="col s12 add-more-discounts" method="post" action="/user/:user_id/discount">
-            <div class="input-field col s12">
-              <label>Company Name:</label>
-              <input type="text" name="company_name" value="<%= @company && @company.company_name %>">
-            </div>
+        <form class="col s12 add-more-discounts" method="post" action="/user/:user_id/discount">
+          <div class="input-field col s12">
+            <label>Company Name:</label>
+            <input type="text" name="company_name" value="<%= @company && @company.company_name %>">
+          </div>
 
           <div class="input-field col s12">
             <label>Discount Percent:</label>
@@ -57,34 +60,31 @@
           </div>
 
           <button class="btn waves-effect waves-light add-btn" type="submit" name="action">Sumbit</button>
-          </form>
+        </form>
 
-          <form class="col s12 add-more-restrictions" method="post" >
-          <!-- action="/user/1/restriction" -->
-            <div class="input-field col s12">
-              <label>Discount Restriction:</label>
-              <input type="text" name="description">
-            </div>
-            <button class="btn waves-effect waves-light add-btn" type="submit" name="action">Sumbit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-
-<div class="col s8">
-  <% @companies.each do |company| %>
-  <div class="col s4">
-    <div class="card black">
-      <div class="card-content white-text">
-        <span class="card-title"><%= company.company_name.truncate(16) %></span>
-      </div>
-      <div class="card-action">
-        <a href="/companies/<%=company.id%>/discount">Details</a>
+        <form class="col s12 add-more-restrictions" method="post" >
+          <div class="input-field col s12">
+            <label>Discount Restriction:</label>
+            <input type="text" name="description">
+          </div>
+          <button class="btn waves-effect waves-light add-btn" type="submit" name="action">Sumbit</button>
+        </form>
       </div>
     </div>
   </div>
-  <% end %>
-</div>
-</div>
+
+  <div class="col s8">
+    <% @companies.each do |company| %>
+    <div class="col s4">
+      <div class="card black">
+        <div class="card-content white-text">
+          <span class="card-title"><%= company.company_name.truncate(16) %></span>
+        </div>
+        <div class="card-action">
+          <a href="/companies/<%=company.id%>/discount">Details</a>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
