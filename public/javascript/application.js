@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+  $('.modal-trigger').leanModal();
+
   $("#show-form").click(function(){
     $(".add-more").show();
     $(".add-btn").show();
@@ -8,4 +11,5 @@ $(document).ready(function() {
       $(".add-more").hide();
       $(".add-btn").hide();
   });
+
 });

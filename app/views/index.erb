@@ -1,16 +1,3 @@
-<nav>
-  <div class="nav-wrapper">
-    <a href="/" class="brand-logo">Discount Sharing</a>
-    <ul id="nav-mobile" class="right">
-      <% if session[:user_id] %>
-        <li><a href="user/logout">Logout</a></li>
-      <% else %>
-        <li><a href="user/login">Login</a></li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
-
 <div class="container">
   <div class="row about">
     <div class="col s6">
@@ -47,41 +34,35 @@
       <form class="col s12" method="post" action="/">
         <div class="row">
           <div class="input-field col s12">
-            <label for="username" >Username:</label>
+            <label for="username">Username:</label>
             <input id="username" class="validates" type="text" name="username" value="<%= @user && @user.username %>">
           </div>
-        </div>
-        <div class="row">
+
           <div class="input-field col s12">
             <label>Email:</label>
             <input type="text" name="email" value="<%= @user && @user.email %>">
           </div>
-        </div>
-        <div class="row">
+
           <div class="input-field col s12">
             <label>Password:</label>
             <input type="password" name="password" value="<%= @user && @user.password %>">
           </div>
-        </div>
-        <div class="row">
+
           <div class="input-field col s12">
             <label>Password Confirmation:</label>
             <input type="password" name="password_confirmation" value="<%= @user && @user.password %>">
           </div>
-        </div>
-        <div class="row">
+
           <div class="input-field col s12">
             <label>Company Name:</label>
             <input type="text" name="company_name" value="<%= @company && @company.company_name %>">
           </div>
-        </div>
-        <div class="row">
+
           <div class="input-field col s12">
             <label>Discount Percent:</label>
             <input type="text" name="discount_percent" value="<%= @discount && @discount.discount_percent %>">
           </div>
-        </div>
-        <div class="row">
+
           <div class="input-field col s12">
             <label>Discount Restriction:</label>
             <input type="text" name="description" value="<%= @restriction && @restriction.description %>">

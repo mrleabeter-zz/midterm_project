@@ -22,8 +22,8 @@ end
 
 get '/user/profile' do
   @discounts = Discount.all
-  @user = User.find(session[:user_id])
   @companies = Company.all
+  @user = User.find(session[:user_id])
   erb :'user/profile'
 end
 
@@ -41,11 +41,10 @@ get '/user/:id' do
   erb :'user/profile'
 end
 
-
 get '/users/delete' do
   @user = User.find(session[:user_id])
   @user.destroy
-  redirect '/user/logout'    
+  redirect '/user/logout'
 end
 
 post '/' do
@@ -108,7 +107,6 @@ post '/user/login' do
   end
 end
 
- 
 post '/user/update_profile' do
   @user = User.find(session[:user_id])
   @user.update(
@@ -171,4 +169,3 @@ post '/user/:user_id/discount' do
     redirect "/user/#{@user.id}/discount"
   end
 end
-

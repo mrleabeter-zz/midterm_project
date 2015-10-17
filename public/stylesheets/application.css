@@ -19,4 +19,12 @@ i {
 
 #profile {
   margin-top: 10%;
+
+.modal {
+  color: black;
+}
+
+.modal-action.modal-close.waves-effect.waves-green.btn-flat {
+  color: white;
+>>>>>>> modal
 }
