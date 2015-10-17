@@ -1,16 +1,20 @@
 <form method="get" action="/companies/discount">
-
-<h1><%= @company.company_name %></h1>
-
-<div>
-    <% @company.discounts.with_user.each do |discount| %>
-    <strong>User:</strong>  <%= discount.user.username %>
-    <strong>Company:</strong>  <%= discount.company.company_name %>
-    <strong>Discount:</strong> <%= discount.discount_percent %>
-          <% if discount.restrictions.count >= 1 %>
-            <% discount.restrictions.each do |restriction| %>
-            <li><%= restriction.description %></li>
+    <h1><%= @company.company_name %></h1>      
+    <div>
+        <% @company.discounts.with_user.each do |discount| %>
+            <strong>User:</strong>  <%= discount.user.username %>
+            <strong>Company:</strong>  <%= discount.company.company_name %>
+            <strong>Discount:</strong> <%= discount.discount_percent %>
+            <% if discount.restrictions.count >= 1 %>
+                <% discount.restrictions.each do |restriction| %>
+                    <li><%= restriction.description %></li>
+                <% end %>
             <% end %>
-          <% end %>
-    <% end %>
-</div>
+            <% email = discount.user.email %>
+            <% m1 = URI::MailTo.build(["#{email}", "subject=BudgieRequest"]) %>
+            <a href="<%=m1%>">Contact</a>
+        <% end %>
+    </div>
+</form>
+
+

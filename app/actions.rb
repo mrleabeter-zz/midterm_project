@@ -1,4 +1,12 @@
 # Homepage (Root path)
+
+require 'mail'
+require 'uri'
+
+Mail.defaults do
+  delivery_method :smtp, address: "127.0.0.1", port: 1025
+end
+
 get '/' do
   if session[:user_id]
     redirect '/user/profile'
