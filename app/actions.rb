@@ -7,10 +7,6 @@ get '/' do
   end
 end
 
-get '/user/login' do
-  erb :'user/login'
-end
-
 get '/user/logout' do
   session[:user_id] = nil
   redirect '/'
@@ -95,15 +91,19 @@ post '/user/login' do
   user = User.find_by(
     username: params[:username].downcase,
   )
+  if user == nil
+    redirect '/'
+  end
+
   if user.authenticate(params[:password])
-    response.set_cookie 'user_session', {
-      value: params[:user_id],
-      max_age: 60000
-    }
-    session[:user_id] = user.id
-    redirect '/user/profile'
+      response.set_cookie 'user_session', {
+        value: params[:user_id],
+        max_age: 60000
+      }
+      session[:user_id] = user.id
+      redirect '/user/profile'
   else
-    erb :'user/login'
+    redirect '/'
   end
 end
 
