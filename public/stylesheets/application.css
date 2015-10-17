@@ -12,6 +12,12 @@ ul {
   display: none;
 }
 
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
 .add-more-restrictions {
   display: none;
 }
