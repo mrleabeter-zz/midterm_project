@@ -1,5 +1,9 @@
-li {
-  list-style: none;
+td {
+    vertical-align: top;
+}
+
+ul {
+  margin: auto;
 }
 
 .add-btn {
@@ -8,7 +12,11 @@ li {
   display: none;
 }
 
-.add-more {
+.add-more-restrictions {
+  display: none;
+}
+
+.add-more-discounts {
   display: none;
 }
 
