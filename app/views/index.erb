@@ -11,8 +11,6 @@
           frankfurter short ribs meatball pastrami tongue short loin flank
           turkey spare ribs.
         </p>
-        <% m1 = URI::MailTo.build(['joe@example.com', 'subject=Budgie Request']) %>
-        <a href="<%=m1%>">Bacon</a>
         <% if (@user && @user.errors.any?) || (@company && @company.errors.any?) || (@discount && @discount.errors.any?) || (@restriction && @restriction.errors.any?) %>
           <div>
             <h5>Some issues with your form, please fix them:</h4>
