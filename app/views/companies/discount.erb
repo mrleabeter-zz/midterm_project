@@ -27,7 +27,10 @@
                   <% end %>
                   </ul>
                 <% end %></td>
-                <td></td>
+                <td>            
+                    <% m1 = URI::MailTo.build(["#{email}", "subject=BudgieRequest"]) %>
+                    <a href="<%=m1%>">Contact</a>
+                </td>
               </tr>
               <% end %>
             </tbody>

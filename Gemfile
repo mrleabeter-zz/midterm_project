@@ -15,6 +15,10 @@ gem 'bcrypt'
 
 gem 'pry'
 
+gem 'mail'
+
+gem 'mailcatcher'
+
 group :development, :test do
   gem 'shotgun'
   gem 'sqlite3'
