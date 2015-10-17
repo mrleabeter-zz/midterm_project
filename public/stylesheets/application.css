@@ -92,3 +92,8 @@ i {
 .card-action {
   background-color: #2C3E50;
 }
+
+.waves-effect.waves-light.btn-large.go-back {
+  background-color: white;
+  color: black;
+}

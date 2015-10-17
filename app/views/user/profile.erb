@@ -31,7 +31,7 @@
                 <% end %>
                 <li>
                   <i data-id="<%= discount.id %>" class="show-add-restriction-form small material-icons" title="Add another restriction">note_add</i>
-                  <img id="hide-add-restriction-form" class="hide-add-restriction-form" src="/img/x.svg" width="29px" height="29px">
+                  <img id="hide-add-restriction-form" class="hide-add-restriction-form" src="/img/x_sml.svg" width="28px" height="28px">
                 </li>
                 </ul>
               <% end %></td>
@@ -41,7 +41,7 @@
         </table>
 
         <i id="show-add-discount-form" class="small material-icons" title="Add another discount">note_add</i>
-        <img id="hide-add-discount-form" class="hide-add-discount-form" src="/img/x.svg" width="29px" height="29px">
+        <img id="hide-add-discount-form" class="hide-add-discount-form" src="/img/x_sml.svg" width="28px" height="28px">
 
         <form class="col s12 add-more-discounts" method="post" action="/user/:user_id/discount">
           <div class="input-field col s12">
@@ -81,7 +81,7 @@
           <span class="card-title"><%= company.company_name.truncate(16) %></span>
         </div>
         <div class="card-action">
-          <a href="/companies/<%=company.id%>/discount">Details</a>
+          <a href="/companies/<%=company.id%>/discount">Check Users</a>
         </div>
       </div>
     </div>

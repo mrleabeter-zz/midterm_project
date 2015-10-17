@@ -26,16 +26,18 @@
                     <li><%= restriction.description %></li>
                   <% end %>
                   </ul>
-                <% end %></td>
-                <td>            
+                <% end %>
+                </td>
+                <td>
+                    <% email = discount.user.email %>
                     <% m1 = URI::MailTo.build(["#{email}", "subject=BudgieRequest"]) %>
-                    <a href="<%=m1%>">Contact</a>
+                    <a href="<%=m1%>"><img src="/img/email.svg"></a>
                 </td>
               </tr>
               <% end %>
             </tbody>
           </table>
-          <button>Back</button>
+          <a class="waves-effect waves-light btn-large go-back" href="/user/profile">Back</a>
         </div>
       </div>
     </div>
