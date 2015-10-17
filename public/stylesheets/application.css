@@ -1,9 +1,31 @@
+
 td {
     vertical-align: top;
 }
 
 ul {
   margin: auto;
+}
+
+body {
+  background-color: #ECF0F1;
+}
+
+li {
+  list-style: none;
+}
+
+nav ul a {
+  color: black;
+}
+
+i {
+  cursor: pointer;
+  cursor: hand;
+}
+
+#profile {
+  margin-top: 10%;
 }
 
 .add-btn {
@@ -20,19 +42,39 @@ ul {
   display: none;
 }
 
-i {
-  cursor: pointer;
-  cursor: hand;
-}
-
-#profile {
-  margin-top: 10%;
-}
-
 .modal {
   color: black;
 }
 
 .modal-action.modal-close.waves-effect.waves-green.btn-flat {
   color: white;
+}
+
+.btn.waves-effect.waves-light {
+  background-color: white;
+  color: black;
+}
+
+.card .card-action a {
+  color: #E74C3C;
+}
+
+.card .card-action a:hover {
+  color: black;
+}
+
+.modal-action.modal-close.waves-effect.waves-green.btn-flat {
+  color: black;
+}
+
+.nav-wrapper {
+  background-color: #E74C3C;
+}
+
+.card-content.white-text {
+  background-color: #2C3E50;
+}
+
+.card-action {
+  background-color: #2C3E50;
 }
