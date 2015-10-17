@@ -2,24 +2,22 @@
   <div class="col s4">
     <div class="card add-form">
     <div class="col s4">
-    <img id="profile" src="/img/profile_pic.jpg" alt="" class="circle responsive-img" height="100px" width="100px">
-     </div>
-      <div class="card-content white-text">
-        <span class="card-title"><%= @user.username.capitalize %>
-        <div class="right-align">
-        <h6>Delete Your Profile</h6>
-        <a href="/users/delete" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
-      </div>
-      </span>
-        <table>
-          <thead>
-            <tr>
-              <th data-field="Company">Company</th>
-              <th data-field="Discount">Discount</th>
-              <th data-field="Restrictions">Restrictions</th>
-            </tr>
-          </thead>
-
+      <img id="profile" src="/img/profile_pic.jpg" alt="" class="circle responsive-img" height="100px" width="100px">
+       </div>
+        <div class="card-content white-text">
+          <span class="card-title"><%= @user.username.capitalize %>
+          <div class="right-align">
+          <a href="/users/delete" class="delete-button btn-floating btn-small waves-effect waves-light red" title="Delete User Profile"><i class="material-icons">delete</i></a>
+        </div>
+        </span>
+          <table>
+            <thead>
+              <tr>
+                <th data-field="Company">Company</th>
+                <th data-field="Discount">Discount</th>
+                <th data-field="Restrictions">Restrictions</th>
+              </tr>
+            </thead>
           <tbody>
             <% @user.discounts.each do |discount| %>
             <tr>
