@@ -31,23 +31,21 @@
                 <td><%= discount.company.company_name %></td>
                 <td><%= discount.discount_percent %></td>
                 <td><% if discount.restrictions.count >= 1 %>
-                  <% discount.restrictions.each do |restriction| %>
-                    <%= restriction.description %>
+                  <ul><% discount.restrictions.each do |restriction| %>
+                    <li><%= restriction.description %></li>
                   <% end %>
+                  <li><i data-id="<%= discount.id %>" class="show-add-restriction-form small material-icons" title="Add another restriction" >note_add</i><i class="hide-add-restriction-form small material-icons" title="Hide restriction form.">https</i></li>
+                  </ul>
                 <% end %></td>
               </tr>
               <% end %>
             </tbody>
           </table>
 
-          <i id="show-form" class="small material-icons">note_add</i>
-          <i id="hide-form" class="small material-icons">https</i>
+          <i id="show-add-discount-form" class="small material-icons" title="Add another discount" >note_add</i>
+          <i id="hide-add-discount-form" class="small material-icons" title="Hide discount form.">https</i>
 
-          <% @discounts.each do |discount| %>
-            <% @discount = discount %>
-          <% end %>
-
-          <form class="col s12 add-more" method="post" action="/user/:user_id/discount">
+          <form class="col s12 add-more-discounts" method="post" action="/user/:user_id/discount">
             <div class="input-field col s12">
               <label>Company Name:</label>
               <input type="text" name="company_name" value="<%= @company && @company.company_name %>">
@@ -65,6 +63,20 @@
 
             <button class="btn waves-effect waves-light add-btn" type="submit" name="action">Sumbit</button>
           </form>
+
+          
+
+          <form class="col s12 add-more-restrictions" method="post" >
+          <!-- action="/user/1/restriction" -->
+            <div class="input-field col s12">
+              <label>Discount Restriction:</label>
+              <input type="text" name="description">
+            </div>
+            <button class="btn waves-effect waves-light add-btn" type="submit" name="action">Sumbit</button>
+          </form>
+
+
+
         </div>
       </div>
     </div>
