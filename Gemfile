@@ -19,6 +19,9 @@ gem 'mail'
 
 gem 'mailcatcher'
 
+gem 'populator'
+gem 'faker'
+
 group :development, :test do
   gem 'shotgun'
   gem 'sqlite3'
