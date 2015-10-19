@@ -20,12 +20,16 @@ nav ul a {
 }
 
 nav .brand-logo {
-  margin-left: 10px;
+  margin-left: 11px;
 }
 
 i {
   cursor: pointer;
   cursor: hand;
+}
+
+.brand-logo {
+  margin-top: 2px;
 }
 
 .hide-add-discount-form {
