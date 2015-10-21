@@ -17,14 +17,14 @@ gem 'pry'
 
 gem 'mail'
 
-gem 'mailcatcher'
+# gem 'mailcatcher'
 
 gem 'populator'
 gem 'faker'
 
 group :development, :test do
   gem 'shotgun'
-  gem 'sqlite3'
+  # gem 'sqlite3'
 end
 
 group :production do
