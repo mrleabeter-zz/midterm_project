@@ -19,9 +19,17 @@ nav ul a {
   color: black;
 }
 
+nav .brand-logo {
+  margin-left: 11px;
+}
+
 i {
   cursor: pointer;
   cursor: hand;
+}
+
+.brand-logo {
+  margin-top: 2px;
 }
 
 .hide-add-discount-form {
@@ -69,6 +77,7 @@ i {
 .btn.waves-effect.waves-light {
   background-color: white;
   color: black;
+  margin-right: 24px;
 }
 
 .card .card-action a {

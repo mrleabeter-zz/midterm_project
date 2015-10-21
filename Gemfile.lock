@@ -22,6 +22,8 @@ GEM
     coderay (1.1.0)
     daemons (1.2.3)
     eventmachine (1.0.5)
+    faker (1.5.0)
+      i18n (~> 0.5)
     i18n (0.7.0)
     json (1.8.3)
     mail (2.6.3)
@@ -39,6 +41,7 @@ GEM
     minitest (5.8.1)
     multi_json (1.11.2)
     pg (0.18.3)
+    populator (1.0.0)
     pry (0.10.2)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -99,9 +102,11 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   bcrypt
+  faker
   mail
   mailcatcher
   pg
+  populator
   pry
   puma
   rake
