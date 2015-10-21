@@ -114,6 +114,7 @@ DEPENDENCIES
   sinatra
   sinatra-activerecord
   sinatra-contrib
+  sqlite3
   tux
 
 BUNDLED WITH
